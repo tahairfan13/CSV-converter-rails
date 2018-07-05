@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 def create_products
-  products = SmarterCSV.process("#{Rails.public_path}/product.csv", {key_mapping: {name: :name}})
+  products = SmarterCSV.process("#{Rails.public_path}/products.csv", {key_mapping: {name: :name ,orignalsku: :orig , barcode: :Barcode}})
   products.each do |p|
-    ProductPrice.create(name: p[:name])
+    ProductPrice.create(name: p[:name], orignalsku: p[:orig] , barcode: p[:Barcode] )
   end
   p "Products added to database"
 end
